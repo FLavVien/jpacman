@@ -39,6 +39,11 @@ import java.util.*;
 public class Clyde extends Ghost {
 
     /**
+     * Define and reuse the Random object.
+     */
+    private Random random = new Random();
+
+    /**
      * The amount of cells Clyde wants to stay away from Pac Man.
      */
     private static final int SHYNESS = 8;
@@ -127,7 +132,7 @@ public class Clyde extends Ghost {
         if (directions.isEmpty()) {
             return null;
         }
-        int i = new Random().nextInt(directions.size());
+        int i = random.nextInt(directions.size());
         return directions.get(i);
     }
 }

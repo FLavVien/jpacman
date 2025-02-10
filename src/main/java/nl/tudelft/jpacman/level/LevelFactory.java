@@ -50,6 +50,7 @@ public class LevelFactory {
      */
     private final PointCalculator pointCalculator;
 
+
     /**
      * Creates a new level factory.
      *
@@ -132,6 +133,11 @@ public class LevelFactory {
         private static final long DELAY = 175L;
 
         /**
+         * Define and reuse the Random object.
+         */
+        private Random random = new Random();
+
+        /**
          * Creates a new random ghost.
          *
          * @param ghostSprite
@@ -164,7 +170,7 @@ public class LevelFactory {
             if (directions.isEmpty()) {
                 return null;
             }
-            int i = new Random().nextInt(directions.size());
+            int i = random.nextInt(directions.size());
             return directions.get(i);
         }
     }

@@ -31,6 +31,11 @@ import java.util.*;
  */
 public class Inky extends Ghost {
 
+    /**
+     * Define and reuse the Random object.
+     */
+    private Random random = new Random();
+
     private static final int SQUARES_AHEAD = 2;
 
     /**
@@ -138,7 +143,7 @@ public class Inky extends Ghost {
         if (directions.isEmpty()) {
             return null;
         }
-        int i = new Random().nextInt(directions.size());
+        int i = random.nextInt(directions.size());
         return directions.get(i);
     }
 }

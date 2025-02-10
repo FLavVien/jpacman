@@ -52,6 +52,11 @@ public class Blinky extends Ghost {
     private static final int MOVE_INTERVAL = 250;
 
     /**
+     * Define and reuse the Random object.
+     */
+    private Random random = new Random();
+
+    /**
      * Creates a new "Blinky", a.k.a. "Shadow".
      *
      * @param spriteMap
@@ -114,7 +119,7 @@ public class Blinky extends Ghost {
         if (directions.isEmpty()) {
             return null;
         }
-        int i = new Random().nextInt(directions.size());
+        int i = random.nextInt(directions.size());
         return directions.get(i);
     }
 }

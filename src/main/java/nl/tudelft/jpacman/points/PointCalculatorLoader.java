@@ -11,7 +11,7 @@ import java.util.Properties;
  */
 public class PointCalculatorLoader {
 
-    private static Class clazz = null;
+    private Class clazz = null;
 
     /**
      * Load a points calculator and return it.
