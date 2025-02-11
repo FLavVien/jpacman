@@ -92,7 +92,7 @@ public class Player extends Unit {
             deathSprite.setAnimating(false);
             this.killer = null;
         }
-        if (!isAlive) {
+        if (!isAlive && remainingLives == 0) {
             deathSprite.restart();
         }
         this.alive = isAlive;
@@ -104,12 +104,8 @@ public class Player extends Unit {
     public void loseLife() {
         if (remainingLives > 0) {
             remainingLives--;
-            if (remainingLives == 0) {
-                setAlive(false);  // The player is dead after losing all lives
-            } else {
-                // Reset the player with a new life (specific logic)
-                setAlive(true);
-            }
+            // Check if the player is still alive or dead
+            setAlive(remainingLives > 0); // Set to alive if remainingLives > 0, otherwise dead
         }
     }
 
