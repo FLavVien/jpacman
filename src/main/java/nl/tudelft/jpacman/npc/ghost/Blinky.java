@@ -8,6 +8,7 @@ import nl.tudelft.jpacman.npc.Ghost;
 import nl.tudelft.jpacman.sprite.Sprite;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * <p>
@@ -50,11 +51,6 @@ public class Blinky extends Ghost {
      * The base movement interval.
      */
     private static final int MOVE_INTERVAL = 250;
-
-    /**
-     * Define and reuse the Random object.
-     */
-    private Random random = new Random();
 
     /**
      * Creates a new "Blinky", a.k.a. "Shadow".
@@ -119,7 +115,7 @@ public class Blinky extends Ghost {
         if (directions.isEmpty()) {
             return null;
         }
-        int i = random.nextInt(directions.size());
+        int i = ThreadLocalRandom.current().nextInt(directions.size());
         return directions.get(i);
     }
 }

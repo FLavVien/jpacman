@@ -20,6 +20,11 @@ public class Player extends Unit {
     private int score;
 
     /**
+     * The amount of lives remained.
+     */
+    private int remainingLives;
+
+    /**
      * The animations for every direction.
      */
     private final Map<Direction, Sprite> sprites;
@@ -40,11 +45,6 @@ public class Player extends Unit {
     private Unit killer;
 
     /**
-     * The amount of lives remained
-     */
-    private int remainingLives;
-
-    /**
      * Creates a new player with a score of 0 points.
      *
      * @param spriteMap
@@ -58,7 +58,7 @@ public class Player extends Unit {
         this.sprites = spriteMap;
         this.deathSprite = deathAnimation;
         deathSprite.setAnimating(false);
-        this.remainingLives = 3; // the player starts with 3 lives
+        this.remainingLives = 2; // the player starts with 3 lives
     }
 
     /**
@@ -91,8 +91,7 @@ public class Player extends Unit {
         if (isAlive && remainingLives > 0) {
             deathSprite.setAnimating(false);
             this.killer = null;
-        }
-        if (!isAlive && remainingLives == 0) {
+        } else if (!isAlive && remainingLives == 0) {
             deathSprite.restart();
         }
         this.alive = isAlive;
@@ -104,8 +103,8 @@ public class Player extends Unit {
     public void loseLife() {
         if (remainingLives > 0) {
             remainingLives--;
-            // Check if the player is still alive or dead
-            setAlive(remainingLives > 0); // Set to alive if remainingLives > 0, otherwise dead
+        } else if (remainingLives == 0) {
+            setAlive(false); // Force immediate death
         }
     }
 

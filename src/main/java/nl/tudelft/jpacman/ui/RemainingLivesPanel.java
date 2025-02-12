@@ -32,12 +32,12 @@ public class RemainingLivesPanel extends JPanel {
     /**
      * The way to format remaining lives information.
      */
-    private RemainingLivesFormatter remainingLivesFormatter;
+    private transient RemainingLivesFormatter remainingLivesFormatter;
 
     /**
      * Map to associate each player with their remaining lives label.
      */
-    private final Map<Player, JLabel> livesLabels;
+    private final transient Map<Player, JLabel> livesLabels;
 
     /**
      * Creates a new remaining lives panel with a column for each player.

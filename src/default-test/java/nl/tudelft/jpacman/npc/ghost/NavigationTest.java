@@ -36,7 +36,7 @@ class NavigationTest {
     private MapParser parser;
 
     /**
-     * Map forms
+     * Map forms.
      */
     private static final List<String> SIMPLE_MAP = Lists.newArrayList("####", "#  #", "####");
     private static final List<String> OBSTACLE_MAP = Lists.newArrayList("#####", "# # #", "#####");

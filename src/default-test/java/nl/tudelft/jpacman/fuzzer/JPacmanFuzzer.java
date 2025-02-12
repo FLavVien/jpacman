@@ -17,7 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * A basic fuzzer trying out random moves and writing logs in output files. Number of runs is a
@@ -27,10 +27,7 @@ import java.util.Random;
  */
 @Disabled
 class JPacmanFuzzer {
-    /**
-     * Define and reuse the Random object.
-     */
-    private Random random = new Random();
+
     private static final int RUNS = 5;
     private static final String LOG_HEADER =
         "isAlive, hasCollided, currentDirection, nextDirection, remainingPellets, score";
@@ -110,7 +107,7 @@ class JPacmanFuzzer {
     }
 
     private Direction getRandomDirection() {
-        return Direction.values()[random.nextInt(Direction.values().length)];
+        return Direction.values()[ThreadLocalRandom.current().nextInt(Direction.values().length)];
     }
 
     private void log(BufferedWriter logWriter, Direction chosen) throws IOException {

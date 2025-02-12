@@ -11,6 +11,7 @@ import nl.tudelft.jpacman.sprite.PacManSprites;
 import nl.tudelft.jpacman.sprite.Sprite;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Factory that creates levels and units.
@@ -133,11 +134,6 @@ public class LevelFactory {
         private static final long DELAY = 175L;
 
         /**
-         * Define and reuse the Random object.
-         */
-        private Random random = new Random();
-
-        /**
          * Creates a new random ghost.
          *
          * @param ghostSprite
@@ -170,7 +166,7 @@ public class LevelFactory {
             if (directions.isEmpty()) {
                 return null;
             }
-            int i = random.nextInt(directions.size());
+            int i = ThreadLocalRandom.current().nextInt(directions.size());
             return directions.get(i);
         }
     }

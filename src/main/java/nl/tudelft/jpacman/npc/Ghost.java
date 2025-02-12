@@ -6,7 +6,7 @@ import nl.tudelft.jpacman.sprite.Sprite;
 
 import java.util.Map;
 import java.util.Optional;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * A non-player unit.
@@ -28,11 +28,6 @@ public abstract class Ghost extends Unit {
      * The random variation added to the {@link #moveInterval}.
      */
     private final int intervalVariation;
-
-    /**
-     * Define and reuse the Random object.
-     */
-    private Random random = new Random();
 
     /**
      * Calculates the next move for this unit and returns the direction to move
@@ -79,7 +74,7 @@ public abstract class Ghost extends Unit {
      * @return The suggested delay between moves in milliseconds.
      */
     public long getInterval() {
-        return this.moveInterval + random.nextInt(this.intervalVariation);
+        return (long) this.moveInterval + ThreadLocalRandom.current().nextInt(this.intervalVariation);
     }
 
 
@@ -90,7 +85,7 @@ public abstract class Ghost extends Unit {
      * @return A direction in which the ghost can move, or <code>null</code> if
      * the ghost is shut in by inaccessible squares.
      */
-     protected abstract Direction randomMove();
+    protected abstract Direction randomMove();
 
     /**
      * Determines a possible move in a random direction.
@@ -109,7 +104,7 @@ public abstract class Ghost extends Unit {
         if (directions.isEmpty()) {
             return null;
         }
-        int i = new Random().nextInt(directions.size());
+        int i = ThreadLocalRandom.current().nextInt(directions.size());
         return directions.get(i);
     }*/
 }

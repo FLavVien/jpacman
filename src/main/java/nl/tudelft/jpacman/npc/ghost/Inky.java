@@ -8,6 +8,7 @@ import nl.tudelft.jpacman.npc.Ghost;
 import nl.tudelft.jpacman.sprite.Sprite;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * <p>
@@ -30,11 +31,6 @@ import java.util.*;
  * @author Jeroen Roosen
  */
 public class Inky extends Ghost {
-
-    /**
-     * Define and reuse the Random object.
-     */
-    private Random random = new Random();
 
     private static final int SQUARES_AHEAD = 2;
 
@@ -143,7 +139,7 @@ public class Inky extends Ghost {
         if (directions.isEmpty()) {
             return null;
         }
-        int i = random.nextInt(directions.size());
+        int i = ThreadLocalRandom.current().nextInt(directions.size());
         return directions.get(i);
     }
 }

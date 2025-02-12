@@ -12,7 +12,7 @@ moves = list()
 for line in open(filepath).readlines()[1:]:
     #print line
     # Using regular expressions to match log lines
-    groups = re.search("(.*) (.*) (.*) (.*) (.*) (.*)", line) # status, killedbyghost, currdirection, nextDirection, pellets, score
+    groups = re.search(r"(\w+) (\w+) (\w+) (\w+) (\d+) (\d+)", line) # status, killedbyghost, currdirection, nextDirection, pellets, score
 
     # Collect values in lists to be plotted 
     status.append(groups.group(1)) # status (player.isAlive())

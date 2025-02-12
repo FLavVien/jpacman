@@ -8,6 +8,7 @@ import nl.tudelft.jpacman.npc.Ghost;
 import nl.tudelft.jpacman.sprite.Sprite;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * <p>
@@ -37,11 +38,6 @@ import java.util.*;
  * @author Jeroen Roosen
  */
 public class Clyde extends Ghost {
-
-    /**
-     * Define and reuse the Random object.
-     */
-    private Random random = new Random();
 
     /**
      * The amount of cells Clyde wants to stay away from Pac Man.
@@ -132,7 +128,7 @@ public class Clyde extends Ghost {
         if (directions.isEmpty()) {
             return null;
         }
-        int i = random.nextInt(directions.size());
+        int i = ThreadLocalRandom.current().nextInt(directions.size());
         return directions.get(i);
     }
 }

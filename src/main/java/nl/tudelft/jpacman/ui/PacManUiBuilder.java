@@ -48,7 +48,8 @@ public class PacManUiBuilder {
     /**
      * Way to format remaining lives.
      */
-    private RemainingLivesFormatter remainingLivesFormatter = RemainingLivesPanel.DEFAULT_LIVES_FORMATTER;
+    private RemainingLivesFormatter remainingLivesFormatter =
+        RemainingLivesPanel.DEFAULT_LIVES_FORMATTER;
 
     /**
      * Creates a new Pac-Man UI builder without any mapped keys or buttons.

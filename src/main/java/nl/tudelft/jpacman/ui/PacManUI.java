@@ -73,7 +73,8 @@ public class PacManUI extends JFrame {
      *            The formatter used to display the current score.
      * @param remainingLivesFormatter
      *            The formatter used to display the remaining
-     *            lives of the players. If provided, it customizes how the remaining lives are displayed.
+     *            lives of the players. If provided, it customizes
+     *            how the remaining lives are displayed.
      */
     public PacManUI(final Game game, final Map<String, Action> buttons,
                     final Map<Integer, Action> keyMappings,
