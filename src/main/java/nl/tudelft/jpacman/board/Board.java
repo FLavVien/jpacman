@@ -5,17 +5,26 @@ package nl.tudelft.jpacman.board;
  */
 public class Board {
 
-    private final Square[][] board;
+
+    /**
+     * The grid of squares with board[x][y] being the square at column x, row y.
+     */
+    private final Square[][] squares;
+
 
     Board(Square[][] grid) {
-        if (grid == null || !isValidGrid(grid)) {
-            throw new IllegalArgumentException("Invalid board grid.");
-        }
-        this.board = deepCopy(grid);
+
+        assert grid != null;
+        this.squares = grid;
+        assert invariant() : "Initial grid cannot contain null squares";
     }
 
-    private boolean isValidGrid(Square[][] grid) {
-        for (Square[] row : grid) {
+    /**
+     * Whatever happens, the squares on the board can't be null.
+     * @return false if any square on the board is null.
+     */
+    protected final boolean invariant() {
+        for (Square[] row : squares) {
             for (Square square : row) {
                 if (square == null) {
                     return false;
@@ -36,18 +45,20 @@ public class Board {
     }
 
     public int getWidth() {
-        return board.length;
+        return this.squares.length;
     }
 
     public int getHeight() {
-        return board[0].length;
+        return this.squares[0].length;
     }
 
     public Square squareAt(int x, int y) {
-        if (!withinBorders(x, y)) {
-            throw new IndexOutOfBoundsException("Position out of board boundaries.");
-        }
-        return board[x][y];
+
+        assert withinBorders(x, y);
+        Square result = this.squares[x][y];
+        assert result != null : "Follows from invariant.";
+        return result;
+
     }
 
     public boolean withinBorders(int x, int y) {
